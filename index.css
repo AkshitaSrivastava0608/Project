@@ -1,0 +1,30 @@
+/* Remove padding and margin for all elements */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Show the button on mobile screens only */
+@media screen and (max-width: 767px) {
+    .add_new_mobile_button {
+        display: block; /* or any other desired style */
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 15px 12px;
+        background-color: white;
+        width: 100%;
+        z-index: 3;
+    }
+}
+
+/* Hide the button on larger screens */
+@media screen and (min-width: 768px) {
+    .add_new_mobile_button {
+        display: none;
+    }
+}
+
+body{
+    background-color: #ebf2ff !important;
+}

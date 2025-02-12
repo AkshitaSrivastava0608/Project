@@ -14,6 +14,59 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <div class="add_new_mobile_button"> 
+    <button 
+    class="btn btn-primary d-flex gap-2 align-items-center"
+    type="button" 
+    data-bs-toggle="modal" 
+    data-bs-target="#exampleModal"><i class="fa-regular fa-plus"></i>Add New Items</button> 
+  </div>
+  <!-- AddNewItem Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="ImageURL" class="form-label">Image URL</label>
+            <input type="URL" class="form-control" id="ImageURL" aria-describedby="imageHelp"
+             placeholder="https://images/todo.jpg"
+            />
+            <div id="imageHelp" class="form-text">It is an optional field...</div>
+          </div>
+          <div class="mb-3">
+            <label for="taskTitle" class="form-label">Task Title</label>
+            <input type="text" class="form-control" id="taskTitle"
+             placeholder="enter task"
+            />
+            </div>
+            <div class="mb-3">
+              <label for="taskType" class="form-label">Task Type</label>
+              <input type="text" class="form-control" id="taskType"
+               placeholder="enter name"
+              />
+              </div>
+              <div class="mb-3">
+                <label for="taskType" class="form-label">Task Description</label>
+                <!--<input type="text" class="form-control" id="taskType"
+                 placeholder="demo"
+                />-->
+                <textarea id="taskType" placeholder="enter task description" class="form-control" ></textarea>
+                </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -27,7 +80,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
             </ul>
-              <button class="btn btn-primary d-flex gap-2 align-items-center" type="button"><i class="fa-regular fa-plus"></i>Add New Items</button>
+              <button class="btn btn-primary d-flex gap-2 align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-plus"></i>Add New Items</button>
           </div>
         </div>
       </nav>
@@ -43,6 +96,12 @@
                       </div>
                 </div>
             </div>
+        </section>
+
+        <section class="mt-4">
+          <div class="row task_contents">
+            <h5>Dynamics Cards</h5>
+          </div>
         </section>
       </div>
 
