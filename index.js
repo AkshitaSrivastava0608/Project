@@ -13,7 +13,7 @@ const htmlTaskContent = ({id, url, title, description, type}) => `
         <button type="button" class="btn btn-outline-primary" name=${id}>
             <i class="fa-solid fa-pencil"></i>
         </button>
-        <button type="button" class="btn btn-outline-danger" name=${id}>
+        <button type="button" class="btn btn-outline-danger" name=${id} onclick="deleteTask.apply(this,arguments)">
             <i class="fa-solid fa-trash"></i>
         </button>
     </div>
@@ -23,12 +23,12 @@ const htmlTaskContent = ({id, url, title, description, type}) => `
             alt ="card-img-top" 
             class="card-img-top"/>`
             :`<img 
-            src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScujirQqIFjN5GuM1565_-DIX6OyU_96HzNBl_BAX8GL0JzMs8&s" 
+            src ="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" 
             alt ="card-img-top" 
             class="card-img-top"/>`
         }
         <h4 class="card-title"> ${title}</h4>
-        <p class="card-text">${descritpion}></p>
+        <p class="card-text">${description}></p>
         <div class="tags d-flex flex-wrap">
         <span class="badge bg-primary m-1">${type}</span> 
         </div>
@@ -37,7 +37,9 @@ const htmlTaskContent = ({id, url, title, description, type}) => `
         <button type="button" 
         class="btn btn-primary" 
         data-bs-toggle="modal" 
-        data-bs-target="#showTask">
+        data-bs-target="#showTask"
+        onclick= "openTask.apply(this, arguments)"
+        id=${id}>
         Open Task
         </button>
      </div>
@@ -54,7 +56,7 @@ const htmlModalContent = ({id, url, title, description}) => {
     alt ="card-img-top" 
     class="img-fluid"/>`
     :`<img 
-    src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScujirQqIFjN5GuM1565_-DIX6OyU_96HzNBl_BAX8GL0JzMs8&s" 
+    src = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" 
     alt ="card-img-top" 
     class="img-fluid"/>`
 }
@@ -87,8 +89,9 @@ const handleSbmitBtn = (event) => {
     const input = {
         url: document.getElementById('ImageURL').value,
         title: document.getElementById('taskTitle').value,
-        description: document.getElementById('taskDescription').value,
         type: document.getElementById('tags').value,
+        description: document.getElementById('taskDescription').value,
+        
     }
 
     if(input.title == "" || input.description == "" || input.type ==""){
@@ -106,6 +109,12 @@ updateLocalStorage()
 
 
 const openTask = (e) => {
+    if(!e) e = window.event;
+
+    const getTask = state.taskList.find(({id})=> id === e.target.id)
+    taskModal.innerHTML = htmlModalContent(getTask)
+}
+const deleteTask = (e) => {
     if(!e) e = window.event;
 
     const getTask = state.taskList.find(({id})=> id === e.target.id)
